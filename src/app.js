@@ -48,19 +48,24 @@ app.get("/weather", (req, res) => {
       error: "Please Enter a Addresss",
     });
   }
-  forecast(req.query.address, (error, data, icon, humidity) => {
-    if (error) {
-      return res.send({
-        error,
+  forecast(
+    req.query.address,
+    (error, data, icon, humidity, pressure, visibility) => {
+      if (error) {
+        return res.send({
+          error,
+        });
+      }
+      res.send({
+        forecast: data,
+        location: req.query.address,
+        icon,
+        humidity,
+        pressure,
+        visibility,
       });
     }
-    res.send({
-      forecast: data,
-      location: req.query.address,
-      icon,
-      humidity,
-    });
-  });
+  );
 });
 
 app.get("/help/*", (req, res) => {

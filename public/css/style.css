@@ -57,4 +57,9 @@ button {
 
 .weather-info {
   margin-top: 1rem;
+  display: flex;
+}
+
+.weather-info-box {
+  margin-left: 2rem;
 }

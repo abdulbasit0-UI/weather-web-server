@@ -1,5 +1,5 @@
 const request = require("request");
-
+const { aveta } = require("aveta");
 const forecast = (address, callback) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${address}&appid=1b2b5444bf802bf4aec550977fe1cc92&units=metric`;
 
@@ -15,7 +15,9 @@ const forecast = (address, callback) => {
         undefined,
         `${body.weather[0].description}, It is ${body?.main?.temp} in ${body?.name}. It feels like ${body?.main?.feels_like}.`,
         `${body.weather[0].icon}`,
-        `${body.main.humidity}`
+        `${body.main.humidity}`,
+        `${body.main.pressure}`,
+        `${aveta(body.visibility)}`
       );
     }
   });
