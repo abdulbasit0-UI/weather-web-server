@@ -14,7 +14,8 @@ const forecast = (address, callback) => {
       callback(
         undefined,
         `${body.weather[0].description}, It is ${body?.main?.temp} in ${body?.name}. It feels like ${body?.main?.feels_like}.`,
-        `${body.weather[0].icon}`
+        `${body.weather[0].icon}`,
+        `${body.main.humidity}`
       );
     }
   });
